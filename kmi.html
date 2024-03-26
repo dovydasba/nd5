@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>KMI Skaičiuoklė</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@3.4.1/dist/css/bootstrap-theme.min.css" integrity="sha384-6pzBo3FDv/PJ8r2KRkGHifhEocL+1X2rVCTTkUfGk7/0pbek5mMa1upzvWbrUbOZ" crossorigin="anonymous">
+    <script>
+        function calculateBMI() {
+            var weight = document.getElementById('weight').value;
+            var height = document.getElementById('height').value;
+            var kmi = weight / (height / 100 * height / 100);
+            var interpretation = "";
+
+            if (kmi < 18.5) {
+                interpretation = "Per mažas svoris";
+            } else if (kmi < 24.9) {
+                interpretation = "Normalus svoris";
+            } else if (kmi < 29.9) {
+                interpretation = "Antsvoris";
+            } else {
+                interpretation = "Nutukimas";
+            }
+
+            document.getElementById('bmi').innerHTML = "Jūsų KMI yra " + kmi.toFixed(2) + ". Tai laikoma: " + interpretation;
+        }
+    </script>
+</head>
+<body>
+    <h1>KMI Skaičiuoklė</h1>
+    <p>Svoris (kg): <input type="number" id="weight" required></p>
+    <p>Ūgis (cm): <input type="number" id="height" required></p>
+    <button onclick="calculateBMI()" class="btn btn-primary">Skaičiuoti KMI</button>
+    <p id="bmi"></p>
+</body>
+</html>
